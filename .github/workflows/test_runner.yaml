@@ -5,6 +5,12 @@ on:
     paths-ignore:
     - "run.py"
 
+on:
+  schedule:
+    # Every 3 hours
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '* */3 * * *'
+
 jobs:
   test_job:
     # If you change this job, please also change it in
