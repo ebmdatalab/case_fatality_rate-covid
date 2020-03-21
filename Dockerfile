@@ -2,6 +2,7 @@ FROM ebmdatalab/datalab-jupyter:python3.8.1-2328e31e7391a127fe7184dcce38d581a17b
 
 # R-related setup
 RUN apt-get install -y libcurl4-openssl-dev libssl-dev libnlopt-dev
+ENV R_LIBS_USER=/tmp
 RUN /usr/lib/R/bin/R -e 'install.packages("packrat");'
 
 # Set up jupyter environment
