@@ -7,10 +7,11 @@ RUN apt-get install -y libcurl4-openssl-dev libssl-dev libnlopt-dev
 ENV MAIN_PATH=/home/app/notebook
 
 # Install R requirements
-RUN /usr/lib/R/bin/R -e 'install.packages("IRkernel")'
-RUN /usr/lib/R/bin/R -e 'IRkernel::installspec()'
+COPY setup.R /tmp/
+RUN /usr/lib/R/bin/R -f /tmp/setup.R
 
-RUN /usr/lib/R/bin/R -e 'install.packages("rvest"); install.packages("data.table"); install.packages("stringr"); install.packages("meta")'
+COPY setup2.R /tmp/
+RUN /usr/lib/R/bin/R -f /tmp/setup2.R
 
 EXPOSE 8888
 
