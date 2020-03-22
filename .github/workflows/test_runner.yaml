@@ -21,4 +21,4 @@ jobs:
     - name: Test
       uses: ./.github/actions/build
       with:
-        args: jupyter nbconvert --to notebook --execute /home/app/notebook/covid-mortality-by-testing.ipynb --output /home/app/notebook/covid-mortality-by-testing.ipynb./run_tests.sh
+        args: jupyter nbconvert --to notebook --execute covid-mortality-by-testing.ipynb --output covid-mortality-by-testing.ipynb
