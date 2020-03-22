@@ -2,18 +2,15 @@ FROM ebmdatalab/datalab-jupyter:python3.8.1-2328e31e7391a127fe7184dcce38d581a17b
 
 # R-related setup
 RUN apt-get install -y libcurl4-openssl-dev libssl-dev libnlopt-dev
-ENV R_LIBS_USER=/tmp
-RUN /usr/lib/R/bin/R -e 'install.packages("packrat");'
 
 # Set up jupyter environment
 ENV MAIN_PATH=/home/app/notebook
 
 # Install R requirements
-COPY packrat/ /tmp/packrat/
-RUN /usr/lib/R/bin/R -e 'setwd("/tmp"); packrat::on(); packrat::restore(project=".");'
 RUN /usr/lib/R/bin/R -e 'install.packages("IRkernel")'
 RUN /usr/lib/R/bin/R -e 'IRkernel::installspec()'
 
+RUN /usr/lib/R/bin/R -e 'install.packages("rvest"); install.packages("data.table"); install.packages("stringr"); install.packages("meta")'
 
 EXPOSE 8888
 
