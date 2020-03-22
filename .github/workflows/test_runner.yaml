@@ -21,4 +21,4 @@ jobs:
     - name: Test
       uses: ./.github/actions/build
       with:
-        args: jupyter nbconvert --to notebook --execute covid-mortality-by-testing.ipynb --output covid-mortality-by-testing.ipynb
+        args: jupyter kernelspec list --json
