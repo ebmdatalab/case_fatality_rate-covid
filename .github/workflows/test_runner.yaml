@@ -2,12 +2,9 @@ name: Notebook checks
 
 on:
   push:
+    branches: "foo"
     paths-ignore:
     - "run.py"
-  schedule:
-    # Every 3 hours
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '* */3 * * *'
 
 jobs:
   rerun:
